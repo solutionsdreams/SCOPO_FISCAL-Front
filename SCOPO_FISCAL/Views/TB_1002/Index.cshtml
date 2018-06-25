@@ -1,0 +1,99 @@
+﻿@model IEnumerable<WBFISCAL_ALFA.Models.TB_1002>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Administrador</li>
+            </ol>
+            <!-- Example DataTables Card-->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fa fa-table"></i> Tabela de Dados Códigos
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable3" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ID_REGISTRO)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.RAZAO_SOCIAL)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FANTASIA)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.IE)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.E_MAIL1)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.E_MAIL2)
+                                </th>
+
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ID_REGISTRO)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RAZAO_SOCIAL)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FANTASIA)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IE)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.E_MAIL1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.E_MAIL2)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Editar", new { /* id=item.PrimaryKey */ }) |
+                                    @Html.ActionLink("Details", "Consultar", new { /* id=item.PrimaryKey */ }) |
+                                    @Html.ActionLink("Delete", "Deletar", new { /* id=item.PrimaryKey */ })
+                                </td>
+                            </tr>
+                            }
+
+                    </table>
+
+
+
+                </div>
+                <div class="card-footer small text-muted"></div>
+            </div>
+
+        </div>
+        <!-- /.container-fluid-->
+        <!-- /.content-wrapper-->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright © WBCO  2017</small>
+                </div>
+            </div>
+        </footer>
+
+</body>

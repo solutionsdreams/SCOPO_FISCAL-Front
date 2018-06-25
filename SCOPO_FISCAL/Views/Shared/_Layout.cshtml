@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>WB-FISCAL</title>
+    <!-- Bootstrap core CSS-->
+    <link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom fonts for this template-->
+    <link href="~/Content/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="~/Content/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" />
+    <link href="~/Content/wbcoStyle.css" rel="stylesheet" />
+    <!-- Custom styles for this template-->
+    <link href="~/Content/sb-admin.css" rel="stylesheet" />
+
+    <link rel="shortcut icon" type="image/png" src="~/img/wbco.ico" />
+    <link rel="shortcut icon" type="image/png" src="~/img/wbco.ico" />
+    <link rel='shortcut icon' type='image/x-icon' src="~/img/wbco.ico" />
+
+</head>
+<body>
+    @if (Convert.ToBoolean(Session["log"]) == true)
+    {
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+            <a class="navbar-brand" href="DashBoard">
+                <img width="160px" style="position:absolute; top: -20px;" src="~/img/LOGO.png" />
+            </a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                        <a class="nav-link" href="DashBoard">
+                            @*<i class="fa fa-fw fa-dashboard"></i>
+                                <span class="nav-link-text">Dashboard</span>*@
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="DashBoard">
+                        <a class="nav-link" href="../Home/DashBoard">
+
+                            @*<i class="fa fa-fw fa-file"></i>
+                                <span class="nav-link-text">Relatórios</span>*@
+                            <i class="fa fa-fw fa-dashboard"></i>
+                            <span class="nav-link-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Relatorios">
+                        <a class="nav-link" href="../Home/Relatorios">
+
+                            <i class="fa fa-fw fa-file"></i>
+                            <span class="nav-link-text">Relatórios</span>
+
+                        </a>
+                    </li>
+
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Importações">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+                            <i class="fa fa-fw fa-table"></i>
+
+                            <span class="nav-link-text">Importações</span>
+                        </a>
+                        <ul class="sidenav-second-level collapse" id="collapseComponents">
+                            <li>
+                                <a href="../Home/Formulario">Formulário</a>
+                            </li>
+                            <li>
+                                <a id="pop" href="../Home/ImportarExcel">Planilha Excel</a>
+                            </li>
+                            <li>
+                                <a href="Importados">Importados</a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
+                            <i class="fa fa-fw fa-sitemap"></i>
+                            <span class="nav-link-text">Cadastros</span>
+                        </a>
+                        <ul class="sidenav-second-level collapse" id="collapseMulti">
+                            <li>
+                                <a href="../TB_1002/Create">Cadastro de Participante</a>
+                            </li>
+                            <li>
+                                <a href="#">Cadastro de Empresas</a>
+                            </li>
+
+                            <li>
+                                <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Listas Cadastradas</a>
+                                <ul class="sidenav-third-level collapse" id="collapseMulti2">
+                                    <li>
+                                        <a href="../TB_1002/Index">Lista de Participante</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Lista de Empresas</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Configurações">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+                            <i class="fa fa-fw fa-wrench"></i>
+                            <span class="nav-link-text">Configurações</span>
+                        </a>
+                        <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+                            <li>
+                                <a href="#">Alterar senha</a>
+                            </li>
+                            <li>
+                                <a href="#">Novo Usuário</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+                        <a class="nav-link" href="#">
+                            <i class="fa fa-fw fa-link"></i>
+                            <span class="nav-link-text">Link</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav sidenav-toggler">
+                    <li class="nav-item">
+                        <a class="nav-link text-center" id="sidenavToggler">
+                            <i class="fa fa-fw fa-angle-left"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-fw fa-envelope"></i>
+                            <span class="d-lg-none">
+                                Mensagens
+                                <span class="badge badge-pill badge-primary">1 Nova</span>
+                            </span>
+                            <span class="indicator text-primary d-none d-lg-block">
+                                <i class="fa fa-fw fa-circle"></i>
+                            </span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="messagesDropdown">
+                            <h6 class="dropdown-header">Nova mensagem:</h6>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <strong>WB-Fiscal</strong>
+
+                                <div class="dropdown-message small">Seja bem vindo!</div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item small" href="#">Mensagens Antigas</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-fw fa-bell"></i>
+                            <span class="d-lg-none">
+                                Alerts
+                                <span class="badge badge-pill badge-warning">3 alertas</span>
+                            </span>
+                            <span class="indicator text-warning d-none d-lg-block">
+                                <i class="fa fa-fw fa-circle"></i>
+                            </span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+                            <h6 class="dropdown-header">New Alerts:</h6>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <span class="text-success">
+                                    <strong>
+                                        <i class="fa fa-long-arrow-up fa-fw"></i>Arquivo Excel FBL5N
+                                    </strong>
+                                </span>
+                                <span class="small float-right text-muted"></span>
+                                <div class="dropdown-message small">Processado com Sucesso</div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <span class="text-danger">
+                                    <strong>
+                                        <i class="fa fa-long-arrow-down fa-fw"></i>Arquivo Excel FBL5N
+                                    </strong>
+                                </span>
+                                <span class="small float-right text-muted"></span>
+                                <div class="dropdown-message small">Existem 29 erros no arquivo confira na tabela de importados FBL5N</div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <span class="text-success">
+                                    <strong>
+                                        <i class="fa fa-long-arrow-up fa-fw"></i>EFD Fertimport 11.2017(2431)
+                                    </strong>
+                                </span>
+                                <span class="small float-right text-muted">11:21 AM</span>
+                                <div class="dropdown-message small">Processado com Sucesso</div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item small" href="#">não existem novos alertas</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <form class="form-inline my-2 my-lg-0 mr-lg-2">
+                            <div class="input-group">
+                                <input class="form-control" type="text" placeholder="Pesquisar...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                            <i class="fa fa-fw fa-sign-out"></i>Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    }
+
+    <div>
+        @RenderBody()
+    </div>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Deseja realmente sair?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Selecione "Logout" para finalizar a sessão.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" href="Index">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+
+    <script src="~/Scripts/sb-admin.js"></script>
+    @*Custom scripts for this page*@
+    <script src="~/Scripts/sb-admin.min.js"></script>
+
+    <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="~/Content/vendor/chart.js/Chart.min.js"></script>
+    <script src="~/Content/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="~/Content/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/sb-admin-datatables.min.js"></script>
+    <script src="~/Scripts/sb-admin-charts.min.js"></script>
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="~/Content/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="~/Content/vendor/datatables/dataTables.bootstrap4.js"></script>
+
+
+
+
+    @RenderSection("scripts", required: false)
+</body>
+
+
+</html>
+<div class="modal fade" id="imagemodal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div>
+            <img src="~/img/carregando.gif" />
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+        if (navigator.userAgent.match(/Android/i)) {
+            window.scrollTo(0, 0); // reset in case prev not scrolled  
+            var nPageH = $(document).height();
+            var nViewH = window.outerHeight;
+            if (nViewH > nPageH) {
+                nViewH -= 250;
+                $('BODY').css('height', nViewH + 'px');
+            }
+            window.scrollTo(0, 1);
+        }
+
+    });
+
+    $("#pop").on("click", function () {
+        $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+    });
+
+</script>

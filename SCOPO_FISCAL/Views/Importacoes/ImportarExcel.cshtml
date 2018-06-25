@@ -1,0 +1,169 @@
+﻿
+@{
+    ViewBag.Title = "ImportarExcel";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Breadcrumbs-->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">Administrador</li>
+                </ol>
+                <!-- Example DataTables Card-->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Tabela de Dados Processados
+                    </div>
+                    <div class="card-body">
+                        <br>
+                        <input class="btn btn-dark btn-block" type="button" onclick="transfertoinput()" id="pop" value="Importar Excel" />
+                        <br>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable3" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            CONTA P
+                                        </th>
+                                        <th>
+                                            CONTA C
+                                        </th>
+                                        <th>
+                                            NUMDOC
+                                        </th>
+                                        <th>
+                                            DIV
+                                        </th>
+                                        <th>
+                                            TP_DOC
+                                        </th>
+                                        <th>
+                                            DT_DOC
+                                        </th>
+                                        <th>
+                                            DT_LCTO
+                                        </th>
+                                        <th>
+                                            PIS
+                                        </th>
+                                        <th>
+                                            COFINS
+                                        </th>
+                                        <th>
+                                            DESCRIÇÃO
+                                        </th>
+                                        <th>
+                                            BASE
+                                        </th>
+                                        <th>
+                                            EMPRESA
+                                        </th>
+                                        <th>
+                                            CLIENTE
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.Resultado)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @item.CONTA_P
+                                            </td>
+                                            <td>
+                                                @item.CONTA_C
+                                            </td>
+                                            <td>
+                                                @item.NUMDOC
+                                            </td>
+                                            <td>
+                                                @item.DIV
+                                            </td>
+                                            <td>
+                                                @item.TP_DOC
+                                            </td>
+                                            <td>
+                                                @item.DT_DOC
+                                            </td>
+                                            <td>
+                                                @item.DT_LCTO
+                                            </td>
+                                            <td>
+                                                @item.PIS
+                                            </td>
+                                            <td>
+                                                @item.COFINS
+                                            </td>
+                                            <td>
+                                                @item.TEXTO
+                                            </td>
+                                            <td>
+                                                @item.BASE
+                                            </td>
+                                            <td>
+                                                @item.EMPRESA
+                                            </td>
+                                            <td>
+                                                @item.CLIENTE
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer small text-muted"></div>
+                </div>
+            </div>
+            <!-- /.container-fluid-->
+            <!-- /.content-wrapper-->
+            <footer class="sticky-footer">
+                <div class="container">
+                    <div class="text-center">
+                        <small>Copyright © WBCO  2017</small>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+    <div class="modal fade" id="imagemodal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div>
+                <img src="~/img/carregando.gif" />
+            </div>
+        </div>
+    </div>
+}
+<script>
+    $("#pop").on("click", function () {
+        $('#imagemodal').modal('show'); 
+        __doPostBack('ImportarExcel', '0')
+    });
+
+    function transfertoinput() {
+        $('#imagemodal').modal('show');
+        $.ajax({
+            url: 'ImportarExcel',
+            dataType: '0',
+            type: 'post',
+            contentType: 'application/x-www-form-urlencoded',
+            data: $(this).serialize(),
+            success: function (data, textStatus, jQxhr) {
+                $('#response pre').html(data);
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+    };
+
+</script>

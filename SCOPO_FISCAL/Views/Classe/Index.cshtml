@@ -1,0 +1,122 @@
+﻿@model WBFISCAL_ALFA.Models.TB_1005
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm())
+{
+
+    <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Breadcrumbs-->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">Administrador</li>
+                </ol>
+                <!-- Example DataTables Card-->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Lista Notas Fiscais por Empresa
+                    </div>
+                    <div class="table-responsive">
+                        <div class="form-group">
+                            @Html.Label("Código Empresa:", new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.ID_EMPRESA, ViewBag.Empresa as SelectList, "Selecione um item..", new { @class = "form-control", @id = "ID_EMPRESA", @onchange = "this.form.submit();" })
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        Nº NF
+                                    </th>
+                                    <th>
+                                        Dt.Emissão
+                                    </th>
+                                    <th>
+                                        Dt.Entrada/Saída
+                                    </th>
+                                    <th>
+                                        Sit.Tributária
+                                    </th>
+                                    <th>
+                                        Tipo
+                                    </th>
+                                    <th>
+                                        Val.Tot.NF
+                                    </th>
+                                    <th>
+                                        Editar
+                                    </th>
+                                    <th style="visibility:hidden">
+
+                                    </th>
+                                </tr>
+                            <thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.Lista)
+                                {
+                                    <tr>
+
+                                        <td>@item.DOC_NUM</td>
+                                        <td>@item.DOC_DT_EMI</td>
+                                        <td> @item.DOC_DT_SAI</td>
+                                        <td> @item.IDSITTRIB</td>
+                                        <td>
+                                            @if (item.DOC_EMIT == "1")
+                                            {
+                                                <span> Entrada</span>
+                                            }
+                                            else
+                                            {
+                                                <span> Saída</span>
+                                            }
+
+                                        </td>
+                                        <td> @item.DOC_VL_TOT</td>
+                                        <td>
+                                            @Html.ActionLink("Visualizar", "EditarNF", "Classe", Model, null)
+                                        </td>
+                                        <td class="nr" style="visibility:hidden"><span>@item.RECNUM</span></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="card-footer small text-muted"></div>
+                </div>
+            </div>
+            <!-- /.container-fluid-->
+            <!-- /.content-wrapper-->
+            <footer class="sticky-footer">
+                <div class="container">
+                    <div class="text-center">
+                        <small>Copyright ©SolutionsDreams 2018</small>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+
+
+
+}
+
+<script src="~/Content/vendor/jquery/jquery.min.js"></script>
+
+
+<script>
+    $(".use-edit").click(function () {
+        var $row = $(this).closest("tr");
+        var Id = $row.find(".nr").text();
+
+    });
+</script>

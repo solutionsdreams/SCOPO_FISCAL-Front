@@ -1,0 +1,561 @@
+﻿
+@{
+    ViewBag.Title = "EditarNF";
+}
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Administrador</li>
+            </ol>
+            <!-- Example DataTables Card-->
+            <div class="card mb-3">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link" id="NFe-tab" data-toggle="tab" href="#nfe" role="tab" aria-controls="nfe" aria-selected="true">NFe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="emitente-tab" data-toggle="tab" href="#emitente" role="tab" aria-controls="emitente" aria-selected="false">Emitente</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="Destinatario-tab" data-toggle="tab" href="#Destinatario" role="tab" aria-controls="Destinatario" aria-selected="false">Destinatário</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="Produtos-tab" data-toggle="tab" href="#Produtos" role="tab" aria-controls="Produtos" aria-selected="false">Produtos/Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="Totais-tab" data-toggle="tab" href="#Totais" role="tab" aria-controls="Totais" aria-selected="false">Totais</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="Transporte-tab" data-toggle="tab" href="#Transporte" role="tab" aria-controls="Transporte" aria-selected="false">Transporte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="Cobranca-tab" data-toggle="tab" href="#Cobranca" role="tab" aria-controls="Cobranca" aria-selected="false">Cobrança</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="Inf-tab" data-toggle="tab" href="#Inf" role="tab" aria-controls="Inf" aria-selected="false">Inf.Adicionais</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="Avulsa-tab" data-toggle="tab" href="#Avulsa" role="tab" aria-controls="Avulsa" aria-selected="false">Avulsa</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="nfe" role="tabpanel" aria-labelledby="nfe-tab">
+                        <br>
+                        <h3> Dados da NFe </h3>
+
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-sm-1">
+                                    <label>Modelo</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-sm-1">
+                                    <label>Série</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-sm-1">
+                                    <label>Número</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>Dt.Emissão</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>Dt.Saída ou Entrada</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>Valor</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <br>
+                            <h3> Emitente </h3>
+                            <nr>
+                                <div class="form-row">
+                                    <div class="form-group col-md-2">
+                                        <label>CNPJ</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label>Nome/Razão</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label>Inscrição estadual</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group col-sm-1">
+                                        <label>UF</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <h3> Destinatário </h3>
+                                <nr>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-2">
+                                            <label>CNPJ</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label>Nome/Razão</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label>Inscrição estadual</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group col-sm-1">
+                                            <label>UF</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-2">
+                                            <label>Destino da operação</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label>Consumidor Final</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <h3> Emissão </h3>
+                                    <nr>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-2">
+                                                <label>Tipo de Emissão</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group col-md-2">
+                                                <label>Finalidade</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-2">
+                                                <label>Natureza da Operação</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group col-md-2">
+                                                <label>Tipo Operação</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group col-md-2">
+                                                <label>Forma de Pagamento</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                        </form>
+
+                    </div>
+                    <div class="tab-pane fade show" id="emitente" role="tabpanel" aria-labelledby="emitente-tab">
+                        <br>
+                        <h3> Dados do  Emitente </h3>
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>Razão Social</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>Nome Fantasia</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>CNPJ</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>Endereço</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>Bairro </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>CEP</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>Município </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>Telefone</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>UF </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>PAÌS</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>Inscrição Estadual </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Inscrição Estadual do Substituto Tributário</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>Inscrição Municipal </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade show" id="Destinatario" role="tabpanel" aria-labelledby="Destinatario-tab">
+                        <br>
+                        <h3> Dados do  Destino </h3>
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>Razão Social</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>CNPJ</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>Endereço</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>Bairro </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>CEP</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>Município </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>Telefone</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>UF </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>PAÌS</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>Inscrição Estadual </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Inscrição Suframa</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label> IM </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Email </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade show" id="Produtos" role="tabpanel" aria-labelledby="Produtos-tab">
+                        <br>
+                        <h3> Dados do  Produtos e serviços </h3>
+                        <form>
+
+                            <div class="table-responsive">
+
+                                <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+
+                                            <th>
+                                                Num
+                                            </th>
+                                            <th>
+                                                Descricao
+                                            </th>
+                                            <th>
+                                                Qtd.
+                                            </th>
+                                            <th>
+                                                Unidade Comercial
+                                            </th>
+                                            <th>
+                                                Valor
+                                            </th>
+                                            <th style="visibility:hidden">
+
+                                            </th>
+                                        </tr>
+                                    <thead>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="nr" style="visibility:hidden"></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="tab-pane fade show" id="Totais" role="tabpanel" aria-labelledby="Totais-tab">
+                        <br>
+                        <h3> Totais </h3>
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>Base de cálculo ICMS</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-1">
+                                    <label>Valor ICMS</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>Valor do ICMS Desonerado</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Base de Cálculo ICMS ST</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>Valor ICMS Substituição</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-lg-1">
+                                    <label>Valor Tot.prod.</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>Valor Frete</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Valor do seguro</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>Outras Despesas Acessórias</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-1">
+                                    <label>Valor Total do IPI</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>Valor total da NFe</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Valor total da NFe</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Valor total dos Descontos</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-sm-1">
+                                    <label>Valor Total do II</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-sm-1">
+                                    <label>Valor PIS</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-sm-1">
+                                    <label>Valor da Cofins</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-sm-1">
+                                    <label>Valor Aprox.trib.</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-sm-2">
+                                    <label>Valor total dos Descontos</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-sm-2">
+                                    <label>Valor Total ICMS FCP </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <label>Valor Total ICMS Interestadual UF destino</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <label>Valor Total ICMS Interestadual UF destino Rem</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade show" id="Transporte" role="tabpanel" aria-labelledby="Transporte-tab">
+                        <br>
+                        <h3> Dados do Transporte </h3>
+                        <nr>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>Modalidade do frete</label>
+                                    <input type="text" class="form-control">
+                                </div>
+
+                            </div>
+                            <br>
+                            <h3> Transportador </h3>
+                            <nr>
+                                <div class="form-row">
+                                    <div class="form-group col-md-2">
+                                        <label>CNPJ</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label>Razão Social/Nome</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-sm-1">
+                                        <label>Inscrição Estadual</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        <label>Endereço Completo</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group col-sm-1">
+                                        <label>Município</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <br>
+                                <h3> Volumes </h3>
+                                <nr>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-2">
+                                            <label>Quantidade</label>
+                                            <input type="text" class="form-control">
+                                            <label>Espécie</label>
+                                            <input type="text" class="form-control">
+                                            <label>Marca dos Volumes</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label>Numeração</label>
+                                            <input type="text" class="form-control">
+                                            <label>Peso Líquido</label>
+                                            <input type="text" class="form-control">
+                                            <label>Peso Bruto</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                    </div>
+                    <div class="tab-pane fade show" id="Cobranca" role="tabpanel" aria-labelledby="Cobranca-tab">
+                        <h3> Dados de cobrança </h3>
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label>Número</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label>Vencimento</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label>Valor</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show" id="Inf" role="tabpanel" aria-labelledby="Inf-tab">
+                        <h3> Dados de cobrança </h3>
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label>Informações Adicionais</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label>Descrição</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show" id="Avulsa" role="tabpanel" aria-labelledby="Avulsa-tab">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid-->
+        <!-- /.content-wrapper-->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright ©SolutionsDreams 2018</small>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+

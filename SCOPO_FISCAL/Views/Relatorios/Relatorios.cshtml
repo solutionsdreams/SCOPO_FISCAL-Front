@@ -1,0 +1,452 @@
+﻿@model IEnumerable<WBFISCAL_ALFA.Models.TB_0021>
+
+@{
+    ViewBag.Title = "Relatorios";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Breadcrumbs-->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">Administrador</li>
+                </ol>
+                <!-- Example DataTables Card-->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Tabela de Dados Códigos Pagamento (TB_0021)
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.CLASS_REND)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.COD_RENDIMENTO)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.DESCRICAO)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.BENEF_PJ)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.BENEF_PF)
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CLASS_REND)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.COD_RENDIMENTO)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DESCRICAO)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.BENEF_PJ)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.BENEF_PF)
+                                    </td>
+                                </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer small text-muted"></div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Tabela de Dados Códigos pagamento Pessoas Físicas (TB_0022)
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable0021" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            CLASS_REND
+                                        </th>
+                                        <th>
+                                            COD_RENDIMENTO
+                                        </th>
+                                        <th>
+                                            13º SALARIO
+                                        </th>
+                                        <th>
+                                            DEDUCOES
+                                        </th>
+                                        <th>
+                                            RENDIMENTOS_ISENTOS
+                                        </th>
+                                        <th>
+                                            COMP_IMPOST_DEC_JUDI
+                                        </th>
+                                        <th>
+                                            TRIBUT_EXIGI_SUSPENSA
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.TB_10022)
+                                {
+                                <tr>
+                                    <td>
+                                        @item.CLASS_REND
+                                    </td>
+                                    <td>
+                                        @item.COD_RENDIMENTO
+                                    </td>
+                                    <td>
+                                        @item.13_SALARIO
+                                    </td>
+                                    <td>
+                                        @item.DEDUCOES
+                                    </td>
+                                    <td>
+                                        @item.RENDIMENTOS_ISENTOS
+                                    </td>
+                                    <td>
+                                        @item.COMP_IMPOST_DEC_JUDI
+                                    </td>
+                                    <td>
+                                        @item.TRIBUT_EXIGI_SUSPENSA
+                                    </td>
+                                </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer small text-muted"></div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Tabela de Dados Códigos Rendimento Beneficiários no Exterior (TB_0023)
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable0022" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Código
+                                        </th>
+                                        <th>
+                                            Descrição
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.TB_10023)
+                                {
+                                <tr>
+                                    <td>
+                                        @item.CODIGO
+                                    </td>
+                                    <td>
+                                        @item.DESCRICAO
+                                    </td>
+                                </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer small text-muted"></div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Tabela de Dados Códigos Rendimento Beneficiários no Exterior (TB_0024)
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable0023" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Código
+                                        </th>
+                                        <th>
+                                            Descrição
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.TB_10024)
+                                {
+                                <tr>
+                                    <td>
+                                        @item.CODIGO
+                                    </td>
+                                    <td>
+                                        @item.DESCRICAO
+                                    </td>
+                                </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer small text-muted"></div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Tabela de Informações sobre os beneficiários (TB_0025)
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable0024" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Código
+                                        </th>
+                                        <th>
+                                            Descrição
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.TB_10025)
+                                {
+                                <tr>
+                                    <td>
+                                        @item.CODIGO
+                                    </td>
+                                    <td>
+                                        @item.DESCRICAO
+                                    </td>
+                                </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer small text-muted"></div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Tabela de Classificação de Serviços Prestados Mediante cessão de mão de obra/Empreitada (TB_0026)
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable0025" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Código
+                                        </th>
+                                        <th>
+                                            Descrição
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var item in ViewBag.TB_10026)
+                                {
+                                <tr>
+                                    <td>
+                                        @item.CODIGO
+                                    </td>
+                                    <td>
+                                        @item.DESCRICAO
+                                    </td>
+                                </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer small text-muted"></div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Tabela de País (TB_0027)
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable0026" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Código
+                                        </th>
+                                        <th>
+                                            País
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.TB_10027)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @item.CODIGO
+                                            </td>
+                                            <td>
+                                                @item.PAIS
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer small text-muted"></div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Tabela de Classificação Tributária (TB_0028)
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable0027" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Código
+                                        </th>
+                                        <th>
+                                            País
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.TB_10028)
+                                {
+                                <tr>
+                                    <td>
+                                        @item.CODIGO
+                                    </td>
+                                    <td>
+                                        @item.DESCRICAO
+                                    </td>
+                                </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer small text-muted"></div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Tabela de Código Atividades, Produtos e Serviços (TB_0029)
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable0028" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Código
+                                        </th>
+                                        <th>
+                                            DESCRICAO PRODUTO
+                                        </th>
+                                        <th>
+                                            NCM
+                                        </th>
+                                        <th>
+                                            ALIQUOTAS
+                                        </th>
+                                        <th>
+                                            INICIO ESCRITURACAO
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.TB_10029)
+                                {
+                                <tr>
+                                    <td>
+                                        @item.CODIGO
+                                    </td>
+                                    <td>
+                                        @item.DESCRICAO_PROD
+                                    </td>
+                                    <td>
+                                        @item.NCM
+                                    </td>
+                                    <td>
+                                        @item.ALIQUOTAS
+                                    </td>
+                                    <td>
+                                        @item.INICIO_ESCRITURACAO
+                                    </td>
+                                </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer small text-muted"></div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Tabela de Eventos da EFD-REIF (TB_0030)
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable0029" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Código
+                                        </th>
+                                        <th>
+                                            DESCRICAO
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.TB_10030)
+                                {
+                                <tr>
+                                    <td>
+                                        @item.CODIGO
+                                    </td>
+                                    <td>
+                                        @item.DESCRICAO
+                                    </td>
+
+                                </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer small text-muted"></div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid-->
+            <!-- /.content-wrapper-->
+            <footer class="sticky-footer">
+                <div class="container">
+                    <div class="text-center">
+                        <small>Copyright © WBCO  2017</small>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+
+}

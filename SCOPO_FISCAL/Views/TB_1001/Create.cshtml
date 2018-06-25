@@ -1,0 +1,643 @@
+﻿@model WBFISCAL_ALFA.Models.TB_1001
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Breadcrumbs-->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">Administrador</li>
+                </ol>
+                <!-- Example DataTables Card-->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Formulario de Cadastro de Participantes
+                    </div>
+                    <div>
+                        <form>
+                            <div>
+                                <hr />
+                                <div class="form-group">
+                                    @Html.Label("Código Empresa", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-2">
+                                        @Html.EditorFor(model => model.ID_EMPRESA, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ID_EMPRESA, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.Label("Código Filial", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-2">
+                                        @Html.EditorFor(model => model.ID_FILIAL, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ID_FILIAL, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    @Html.Label("Razão Social", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-12">
+                                        @Html.EditorFor(model => model.RAZAO_SOCIAL, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.RAZAO_SOCIAL, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                   @Html.Label("Nome Fantasia", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-12">
+                                        @Html.EditorFor(model => model.FANTASIA, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.FANTASIA, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.Label("CPF / CNPJ", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.CPF_CNPJ, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.CPF_CNPJ, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                   @Html.Label("Inscrição Municipal", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-5">
+                                        @Html.EditorFor(model => model.INSCRMUNICIPAL, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.INSCRMUNICIPAL, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.Label("Inscrição Estadual", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-5">
+                                        @Html.EditorFor(model => model.INSCESTADUAL, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.INSCESTADUAL, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.Label("Inscrição Suframa", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-5">
+                                        @Html.EditorFor(model => model.INSCSUFRAMA, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.INSCSUFRAMA, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    @Html.Label("CEP", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.IDCEP, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.IDCEP, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.Label("Endereço", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-12">
+                                        @Html.EditorFor(model => model.ENDERECO, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ENDERECO, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.Label("Número", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-1">
+                                        @Html.EditorFor(model => model.NUMERO, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.NUMERO, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.Label("Complemento", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-12">
+                                        @Html.EditorFor(model => model.COMPL, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.COMPL, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                   @Html.Label("Bairro", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.BAIRRO, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.BAIRRO, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.Label("Pais", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.IDPAIS, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.IDPAIS, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.Label("PSIC", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.IDPSIC, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.IDPSIC, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.Label("Estado", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.IDESTADO, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.IDESTADO, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.Label("Telefone", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.IDTELEFONE, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.IDTELEFONE, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.Label("Contador", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.ID_CONTADOR, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ID_CONTADOR, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                   @Html.Label("Email", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-12">
+                                        @Html.EditorFor(model => model.E_MAIL, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.E_MAIL, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                   @Html.Label("Perfil", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.PERFIL, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PERFIL, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.Label("Ramo Atividade", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.IND_ATIVIDADE, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.IND_ATIVIDADE, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.Label("Natureza", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.NAT_PJ, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.NAT_PJ, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.COD_CLIENTE, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.COD_CLIENTE, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.COD_CLIENTE, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.COD_INC_TRIB, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.COD_INC_TRIB, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.COD_INC_TRIB, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.IND_APRO_CRED, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.IND_APRO_CRED, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.IND_APRO_CRED, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.IND_REG_CUM, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.IND_REG_CUM, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.IND_REG_CUM, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ID_MUNICIPIO, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.ID_MUNICIPIO, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ID_MUNICIPIO, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.FLAG_GERA, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.FLAG_GERA, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.FLAG_GERA, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.FL_EFD_CONTR, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.FL_EFD_CONTR, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.FL_EFD_CONTR, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.FL_EFD_ICMS, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.FL_EFD_ICMS, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.FL_EFD_ICMS, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.FL_ECD, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.FL_ECD, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.FL_ECD, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.FL_FCONT, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.FL_FCONT, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.FL_FCONT, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ECD_SIT_ESP, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.ECD_SIT_ESP, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ECD_SIT_ESP, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.NIRE, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.NIRE, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.NIRE, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.SEQ_MOV_CTB, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.SEQ_MOV_CTB, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.SEQ_MOV_CTB, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.IND_SIT_INI_PER, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.IND_SIT_INI_PER, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.IND_SIT_INI_PER, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.FORM_APUR, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.FORM_APUR, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.FORM_APUR, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.FORM_TRIBUT, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.FORM_TRIBUT, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.FORM_TRIBUT, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                        <br>
+                        <input type="submit" value="Salvar" onclick="msg()" class="btn btn-dark btn-block" />
+                        <br>
+                        @*<input class="btn btn-dark btn-block" type="submit" value="Gerar XML" />*@
+                        @*<input class="btn btn-dark btn-block" type="button" onclick="transfertoinput()" id="pop" value="Gerar XML/enviar SPED" />*@
+
+                    </div>
+                    <div class="card-footer small text-muted"></div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid-->
+            <!-- /.content-wrapper-->
+            <footer class="sticky-footer">
+                <div class="container">
+                    <div class="text-center">
+                        <small>Copyright ©SolutionsDreams 2018</small>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+
+
+        <div class="modal fade" id="imagemodalSalvo" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="~/img/ok.png" width="55px" />
+                        <h5 class="modal-title">&nbsp;Sucesso</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <p>Dados de Participantes Salvos com sucesso!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="imagemodalCarregando" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+
+                <div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <img src="~/img/carregando.gif" />
+                    <h4 style="color:azure"> Carregando a listagem de Participantes.</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imagemodalerro" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="~/img/atencao.png" width="55px" />
+                        <h5 class="modal-title">&nbsp;Atenção</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <p>Campos Obrigatórios estão sem preencher</p>
+                        <p><label style="color:red" id="lblCampo1"></label> </p>
+                        <p><label style="color:red" id="lblCampo2"></label> </p>
+                        <p><label style="color:red" id="lblCampo3"></label> </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+
+
+
+}
+
+
+<script>
+
+
+    function MascaraCNPJ(cnpj) {
+        if (mascaraInteiro(cnpj) == false) {
+            event.returnValue = false;
+        }
+        return formataCampo(cnpj, '00.000.000/0000-00', event);
+    }
+
+    //adiciona mascara de cep
+    function MascaraCep(cep) {
+        if (mascaraInteiro(cep) == false) {
+            event.returnValue = false;
+        }
+        return formataCampo(cep, '00.000-000', event);
+    }
+
+    //adiciona mascara de data
+    function MascaraData(data) {
+        if (mascaraInteiro(data) == false) {
+            event.returnValue = false;
+        }
+        return formataCampo(data, '00/00/0000', event);
+    }
+
+    //adiciona mascara ao telefone
+    function MascaraTelefone(tel) {
+        if (mascaraInteiro(tel) == false) {
+            event.returnValue = false;
+        }
+        return formataCampo(tel, '(00) 0000-0000', event);
+    }
+
+    //adiciona mascara ao CPF
+    function MascaraCPF(cpf) {
+        if (mascaraInteiro(cpf) == false) {
+            event.returnValue = false;
+        }
+        return formataCampo(cpf, '000.000.000-00', event);
+    }
+
+    //valida telefone
+    function ValidaTelefone(tel) {
+        exp = /\(\d{2}\)\ \d{4}\-\d{4}/
+        if (!exp.test(tel.value))
+            alert('Numero de Telefone Invalido!');
+    }
+
+    //valida CEP
+    function ValidaCep(cep) {
+        exp = /\d{2}\.\d{3}\-\d{3}/
+        if (!exp.test(cep.value))
+            alert('Numero de Cep Invalido!');
+    }
+
+    //valida data
+    function ValidaData(data) {
+        exp = /\d{2}\/\d{2}\/\d{4}/
+        if (!exp.test(data.value))
+            alert('Data Invalida!');
+    }
+
+    //valida o CPF digitado
+    function ValidarCPF(Objcpf) {
+        var cpf = Objcpf.value;
+        exp = /\.|\-/g
+        cpf = cpf.toString().replace(exp, "");
+        var digitoDigitado = eval(cpf.charAt(9) + cpf.charAt(10));
+        var soma1 = 0, soma2 = 0;
+        var vlr = 11;
+
+        for (i = 0; i < 9; i++) {
+            soma1 += eval(cpf.charAt(i) * (vlr - 1));
+            soma2 += eval(cpf.charAt(i) * vlr);
+            vlr--;
+        }
+        soma1 = (((soma1 * 10) % 11) == 10 ? 0 : ((soma1 * 10) % 11));
+        soma2 = (((soma2 + (2 * soma1)) * 10) % 11);
+
+        var digitoGerado = (soma1 * 10) + soma2;
+        if (digitoGerado != digitoDigitado)
+            alert('CPF Invalido!');
+        $('imagemodalerroCPF').modal('show');
+    }
+
+    //valida numero inteiro com mascara
+    function mascaraInteiro() {
+        if (event.keyCode < 48 || event.keyCode > 57) {
+            event.returnValue = false;
+            return false;
+        }
+        return true;
+    }
+
+    //valida o CNPJ digitado
+    function ValidarCNPJ(ObjCnpj) {
+        var cnpj = ObjCnpj.value;
+        var valida = new Array(6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2);
+        var dig1 = new Number;
+        var dig2 = new Number;
+
+        exp = /\.|\-|\//g
+        cnpj = cnpj.toString().replace(exp, "");
+        var digito = new Number(eval(cnpj.charAt(12) + cnpj.charAt(13)));
+
+        for (i = 0; i < valida.length; i++) {
+            dig1 += (i > 0 ? (cnpj.charAt(i - 1) * valida[i]) : 0);
+            dig2 += cnpj.charAt(i) * valida[i];
+        }
+        dig1 = (((dig1 % 11) < 2) ? 0 : (11 - (dig1 % 11)));
+        dig2 = (((dig2 % 11) < 2) ? 0 : (11 - (dig2 % 11)));
+
+        if (((dig1 * 10) + dig2) != digito)
+            alert('CNPJ Invalido!');
+
+    }
+
+    //formata de forma generica os campos
+    function formataCampo(campo, Mascara, evento) {
+        var boleanoMascara;
+
+        var Digitato = evento.keyCode;
+        exp = /\-|\.|\/|\(|\)| /g
+        campoSoNumeros = campo.value.toString().replace(exp, "");
+
+        var posicaoCampo = 0;
+        var NovoValorCampo = "";
+        var TamanhoMascara = campoSoNumeros.length;;
+
+        if (Digitato != 8) { // backspace
+            for (i = 0; i <= TamanhoMascara; i++) {
+                boleanoMascara = ((Mascara.charAt(i) == "-") || (Mascara.charAt(i) == ".")
+                    || (Mascara.charAt(i) == "/"))
+                boleanoMascara = boleanoMascara || ((Mascara.charAt(i) == "(")
+                    || (Mascara.charAt(i) == ")") || (Mascara.charAt(i) == " "))
+                if (boleanoMascara) {
+                    NovoValorCampo += Mascara.charAt(i);
+                    TamanhoMascara++;
+                } else {
+                    NovoValorCampo += campoSoNumeros.charAt(posicaoCampo);
+                    posicaoCampo++;
+                }
+            }
+            campo.value = NovoValorCampo;
+            return true;
+        } else {
+            return true;
+        }
+    };
+
+    function msg() {
+        var ID_EMPRESA = ($('#ID_EMPRESA').val());
+        var ID_REGISTRO = ($('#ID_REGISTRO').val());
+        var RAZAO_SOCIAL = ($('#RAZAO_SOCIAL').val());
+        var FANTASIA = ($('#FANTASIA').val());
+        var CNPJ = ($('#CNPJ').val());
+        var CPF = ($('#CPF').val());
+        var IE = ($('#IE').val());
+        var SUFRAMA = ($('#SUFRAMA').val());
+        var ENDERECO = ($('#ENDERECO').val());
+
+
+        if (ID_EMPRESA != null) {
+            if (ID_REGISTRO > 0) {
+
+                var model = {
+                    ID_EMPRESA: ID_EMPRESA,
+                    ID_REGISTRO: ID_REGISTRO,
+                    FANTASIA: FANTASIA,
+                    CNPJ: CNPJ,
+                    CPF: CPF,
+                    IE: IE,
+                    SUFRAMA: SUFRAMA,
+                    ENDERECO: ENDERECO
+                };
+
+                $.ajax({
+                    url: 'Create',
+                    type: 'post',
+                    contentType: 'application/x-www-form-urlencoded',
+                    data: JSON.stringify(model),
+                    success: function (data) {
+
+                    },
+                    error: function (data) {
+                        $('#imagemodalSalvo').modal('show');
+                        setTimeout(function () {
+                            $('#imagemodal').modal('hide');
+                            $('#imagemodalok').modal('show');
+                        }, 5000);
+                    }
+                });
+
+                $('#imagemodalerroCPF').modal('show');
+                setTimeout(function () {
+                    $('#imagemodalCarregando').modal('show');
+                }, 3000);
+
+            }
+            else {
+
+                $('#lblCampo2').text("(Código Registro) não foi preenchido!");
+                $('#imagemodalerro').modal('show');
+            }
+        }
+        else {
+            $('#lblCampo1').text("(Código Empresa) não foi preenchido!");
+            $('#imagemodalerro').modal('show');
+
+        }
+    };
+
+
+</script>
+

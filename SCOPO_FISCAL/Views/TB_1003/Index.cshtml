@@ -1,0 +1,912 @@
+﻿@model WBFISCAL_ALFA.Models.TB_1003
+
+
+@using (Html.BeginForm())
+{
+
+    <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Breadcrumbs-->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">Administrador</li>
+                </ol>
+                <!-- Example DataTables Card-->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Lista de Produtos por Empresa
+                    </div>
+                    <br>
+                    <input type="button" value="Cadastrar um novo produto" onclick="Cadastrar()" class="btn btn-dark btn-block" />
+                    <br>
+                    <div class="table-responsive">
+
+                        <div class="form-group">
+                            @Html.Label("Código Empresa:", new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.ID_EMPRESA, ViewBag.Empresa as SelectList, "Selecione um item..", new { @class = "form-control", @id = "ID_EMPRESA", @onchange = "this.form.submit();" })
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        CÓDIGO
+                                    </th>
+                                    <th>
+                                        COD_PRODUTO
+                                    </th>
+                                    <th>
+                                        DESCRICAO
+                                    </th>
+                                    <th>
+                                        ALTERAR
+                                    </th>
+                                    <th>
+                                        EXCLUIR
+                                    </th>
+
+                                </tr>
+                            <thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.Lista)
+                                {
+                                    <tr>
+                                        <td class="nr"><span>@item.RECNUM</span></td>
+                                        <td><span>@item.CODPRODUTO</span></td>
+                                        <td>
+                                            @item.DESCRICAO
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-default use-edit" id="TESTE">
+                                                <img src="~/img/EDITAR.png" /> Alterar
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a id="Excluir" class="btn btn-default use-delete">
+                                                <img src="~/img/DELETAR.png" /> Excluir
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="card-footer small text-muted"></div>
+                </div>
+            </div>
+            <!-- /.container-fluid-->
+            <!-- /.content-wrapper-->
+            <footer class="sticky-footer">
+                <div class="container">
+                    <div class="text-center">
+                        <small>Copyright ©SolutionsDreams 2018</small>
+                    </div>
+                </div>
+            </footer>
+    </body>
+
+    <div class="modal fade" id="ModalForm" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="form-horizontal">
+                    <h5 class="modal-title"><img src="~/img/EDITAR.png" /> Alterar</h5>
+                    <hr />
+
+                    <div id="example-1">
+                        <div id="example-2">
+                            <table id="grid" class="table table-hover" href="#collapseFour">
+                                <!-- Pesquisa para render -->
+                                <tbody id="Grid_Fornecedor">
+                                    <tr v-for="fornecedor in filtroFornecedor">
+                                        <td class="FOR_SELECIONADA" :value="fornecedor.DESCRICAO">
+                                            <div class="col-md-12">
+                                                <label> Descrição: </label>
+                                                @*@Html.LabelFor(model => model.RECNUM, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.RECNUM" } })
+                                                @Html.LabelFor(model => model.ID_EMPRESA, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.RECNUM" } })
+                                                @Html.LabelFor(model => model.ID_FILIAL, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.ID_FILIAL" } })*@
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Descrição: </label>
+                                                @Html.TextBoxFor(model => model.DESCRICAO, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.DESCRICAO" } })
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Código do produto: </label>
+                                                @Html.TextBoxFor(model => model.CODPRODUTO, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.CODPRODUTO" } })
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Código de Barras: </label>
+                                                @Html.TextBoxFor(model => model.COD_BARRA, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.COD_BARRA" } })
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Preço Bruto: </label>
+                                                @Html.TextBoxFor(model => model.P_BRUTO, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.P_BRUTO" } })
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Preço Liquido: </label>
+                                                @Html.TextBoxFor(model => model.P_LIQUIDO, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.P_LIQUIDO" } })
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Código Medida: </label>
+                                                @Html.TextBoxFor(model => model.ID_MEDIDA, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.ID_MEDIDA" } })
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Código NCM: </label>
+                                                @Html.TextBoxFor(model => model.ID_NCM, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.ID_NCM" } })
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Código Serviço: </label>
+                                                @Html.TextBoxFor(model => model.ID_SERV, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.ID_SERV" } })
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Código Classe: </label>
+                                                @Html.TextBoxFor(model => model.ID_CLASSE, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.ID_CLASSE" } })
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Código Genero: </label>
+                                                @Html.TextBoxFor(model => model.ID_GENERO, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.ID_GENERO" } })
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Aliquota ICMS: </label>
+                                                @Html.TextBoxFor(model => model.ALIQ_ICMS, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.ALIQ_ICMS" } })
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Fat. Conv.: </label>
+                                                @Html.TextBoxFor(model => model.FAT_CONV, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.FAT_CONV" } })
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Cest.: </label>
+                                                @Html.TextBoxFor(model => model.CEST, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.CEST" } })
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Código Anterior.: </label>
+                                                @Html.TextBoxFor(model => model.COD_ANT, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.COD_ANT" } })
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Ex. IPI.: </label>
+                                                @Html.TextBoxFor(model => model.EX_IPI, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.EX_IPI" } })
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-12">
+                            <input type="submit" value="Alterar" onclick="msg()" class="btn btn-dark btn-block use-edit-confirm" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ModalFormCadastro" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="form-horizontal">
+                    <h5 class="modal-title"><img src="~/img/EDITAR.png" /> Cadastrar um novo produto</h5>
+                    <hr />
+                    <div id="Cadastro">
+                        <div id="Cadastro-2">
+                            <table id="grid" class="table table-hover" href="#collapseFour">
+                                <!-- Pesquisa para render -->
+                                <tbody id="Grid_Fornecedor">
+                                    <tr v-for="fornecedor in filtroFornecedor">
+                                        <td class="FOR_SELECIONADA" :value="fornecedor.DESCRICAO">
+                                            <div class="form-horizontal">
+                                                <hr />
+                                                <div id="accordion" role="tablist" >
+                                                    <div class="card">
+                                                        <div class="card-header" role="tab" id="headingOne">
+                                                            <h5 class="mb-0">
+                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                    @Html.Label("Dados Iniciais", htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                </a>
+                                                            </h5>
+                                                        </div>
+
+                                                        <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                                                            <div class="card-block">
+                                                                <div class="form-group">
+                                                                    @Html.Label("Código Filial", htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                    <div class="col-md-12">
+                                                                        @Html.EditorFor(model => model.ID_FILIAL, new { htmlAttributes = new { @class = "form-control" } })
+                                                                        @Html.ValidationMessageFor(model => model.ID_FILIAL, "", new { @class = "text-danger" })
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    @Html.Label("Código Produto", htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                    <div class="col-md-12">
+                                                                        @Html.EditorFor(model => model.CODPRODUTO, new { htmlAttributes = new { @class = "form-control" } })
+                                                                        @Html.ValidationMessageFor(model => model.CODPRODUTO, "", new { @class = "text-danger" })
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    @Html.Label("Descrição", htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                    <div class="col-md-12">
+                                                                        @Html.EditorFor(model => model.DESCRICAO, new { htmlAttributes = new { @class = "form-control" } })
+                                                                        @Html.ValidationMessageFor(model => model.DESCRICAO, "", new { @class = "text-danger" })
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    @Html.Label("Código de Barras", htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                    <div class="col-md-12">
+                                                                        @Html.EditorFor(model => model.COD_BARRA, new { htmlAttributes = new { @class = "form-control" } })
+                                                                        @Html.ValidationMessageFor(model => model.COD_BARRA, "", new { @class = "text-danger" })
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    @Html.Label("Peso Bruto", htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                    <div class="col-md-12">
+                                                                        @Html.EditorFor(model => model.P_BRUTO, new { htmlAttributes = new { @class = "form-control" } })
+                                                                        @Html.ValidationMessageFor(model => model.P_BRUTO, "", new { @class = "text-danger" })
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    @Html.Label("Peso Liquido", htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                    <div class="col-md-12">
+                                                                        @Html.EditorFor(model => model.P_LIQUIDO, new { htmlAttributes = new { @class = "form-control" } })
+                                                                        @Html.ValidationMessageFor(model => model.P_LIQUIDO, "", new { @class = "text-danger" })
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    @Html.Label("Alíquota ICMS", htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                    <div class="col-md-12">
+                                                                        @Html.EditorFor(model => model.ALIQ_ICMS, new { htmlAttributes = new { @class = "form-control" } })
+                                                                        @Html.ValidationMessageFor(model => model.ALIQ_ICMS, "", new { @class = "text-danger" })
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    @Html.Label("Codigo Anterior", htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                    <div class="col-md-12">
+                                                                        @Html.EditorFor(model => model.COD_ANT, new { htmlAttributes = new { @class = "form-control" } })
+                                                                        @Html.ValidationMessageFor(model => model.COD_ANT, "", new { @class = "text-danger" })
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    @Html.Label("EX IPI", htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                    <div class="col-md-12">
+                                                                        @Html.EditorFor(model => model.EX_IPI, new { htmlAttributes = new { @class = "form-control" } })
+                                                                        @Html.ValidationMessageFor(model => model.EX_IPI, "", new { @class = "text-danger" })
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header" role="tab" id="headingTwo">
+                                                            <h5 class="mb-0">
+                                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                    @Html.Label("Unidade de Medida:", htmlAttributes: new { @class = "control-label col-sm-4" })
+                                                                    <p>
+                                                                        <label class="control-label col-lg-6" id="lbldescrMedida"></label>
+                                                                        @Html.TextBoxFor(model => model.ID_MEDIDA, new { @class = "control-label col-sm-1", @id = "lblMedida", @value = "Código", @style = "visibility:hidden;" })
+                                                                    </p>
+                                                                    <div class="form-group">
+                                                                        @Html.Label("Fator de Conversão", htmlAttributes: new { @class = "control-label col-md-12" })
+                                                                        <div class="col-md-12">
+                                                                            @Html.EditorFor(model => model.FAT_CONV, new { htmlAttributes = new { @class = "form-control", @id = "txtFAT_CONV" } })
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </h5>
+                                                        </div>
+                                                        <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                                            <div class="card-block">
+                                                                <div class="form-group">
+                                                                    <br>
+                                                                    <div class="col-md-12">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-bordered" id="dataTable3" width="100%" cellspacing="0">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>
+                                                                                            CÓDIGO
+                                                                                        </th>
+                                                                                        <th>
+                                                                                            DESCRICAO
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                <thead>
+                                                                                <tbody>
+                                                                                    @foreach (var item in ViewBag.tbMedida)
+                                                                                    {
+                                                                                        <tr>
+                                                                                            <td class="nr"><span>@item.UNID_MEDIDA</span></td>
+                                                                                            <td class="use-media">
+                                                                                                @item.DESCRICAO
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    }
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header" role="tab" id="headingThree">
+                                                            <h5 class="mb-0">
+                                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+
+                                                                    @Html.Label("Unidade de NCM:", htmlAttributes: new { @class = "control-label col-sm-4" })
+                                                                    <p>
+                                                                        <label class="control-label col-lg-12" id="lbldescrncm"></label>
+                                                                        @Html.TextBoxFor(model => model.ID_NCM, new { @class = "control-label", @id = "lblncm", @value = "Código", @style = "visibility:hidden;" })
+                                                                    </p>
+                                                                </a>
+                                                            </h5>
+                                                        </div>
+                                                        <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                                                            <div class="card-block">
+                                                                <div class="form-group">
+                                                                    <br>
+                                                                    <div class="col-md-12">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>
+                                                                                            CÓDIGO
+                                                                                        </th>
+                                                                                        <th>
+                                                                                            DESCRICAO
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                <thead>
+                                                                                <tbody>
+                                                                                    @foreach (var item in ViewBag.tbNCM)
+                                                                                    {
+                                                                                        <tr>
+                                                                                            <td class="nr"><span>@item.NCM</span></td>
+                                                                                            <td class="use-ncm">
+                                                                                                @item.DESCRICAO
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    }
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header" role="tab" id="headingFour">
+                                                            <h5 class="mb-0">
+                                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="headingFour">
+
+                                                                    @Html.Label("Tipo Serviços:", htmlAttributes: new { @class = "control-label col-sm-4" })
+                                                                    <p>
+                                                                        <label class="control-label col-lg-12" id="lbldescrservicos"></label>
+                                                                        @Html.TextBoxFor(model => model.ID_SERV, new { @class = "control-label", @id = "lblservicos", @value = "Código", @style = "visibility:hidden;" })
+                                                                    </p>
+                                                                </a>
+                                                            </h5>
+                                                        </div>
+                                                        <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
+                                                            <div class="card-block">
+                                                                <div class="form-group">
+                                                                    <br>
+                                                                    <div class="col-md-12">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-bordered" id="dataTable0021" width="100%" cellspacing="0">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>
+                                                                                            CÓDIGO
+                                                                                        </th>
+                                                                                        <th>
+                                                                                            DESCRICAO
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                <thead>
+                                                                                <tbody>
+                                                                                    @foreach (var item in ViewBag.tbServicos)
+                                                                                    {
+                                                                                        <tr>
+                                                                                            <td class="nr"><span>@item.COD_SERV</span></td>
+                                                                                            <td class="use-servicos">
+                                                                                                @item.DESCRICAO
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    }
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header" role="tab" id="headingFive">
+                                                            <h5 class="mb-0">
+                                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="headingFive">
+
+                                                                    @Html.Label("Classes:", htmlAttributes: new { @class = "control-label col-sm-4" })
+                                                                    <p>
+                                                                        <label class="control-label col-sm-6" id="lbldescrclasse"></label>
+                                                                        @Html.TextBoxFor(model => model.ID_CLASSE, new { @class = "control-label", @id = "lblclasse", @value = "Código", @style = "visibility:hidden;" })
+                                                                    </p>
+                                                                </a>
+                                                            </h5>
+                                                        </div>
+                                                        <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFour">
+                                                            <div class="card-block">
+                                                                <div class="form-group">
+
+                                                                    <div class="form-group">
+
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="col-md-12">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-bordered" id="dataTable0022" width="100%" cellspacing="0">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>
+                                                                                            CÓDIGO
+                                                                                        </th>
+                                                                                        <th>
+                                                                                            DESCRICAO
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                <thead>
+                                                                                <tbody>
+                                                                                    @foreach (var item in ViewBag.tbClasse)
+                                                                                    {
+                                                                                        <tr>
+                                                                                            <td class="nr"><span>@item.ID_CLASSE</span></td>
+                                                                                            <td class="use-classe">
+                                                                                                @item.DESCRICAO
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    }
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header" role="tab" id="headingSix">
+                                                            <h5 class="mb-0">
+                                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="headingSix">
+                                                                    @Html.Label("Gênero:", htmlAttributes: new { @class = "control-label col-sm-4" })
+                                                                    <p>
+                                                                        <label class="control-label col-lg-12" id="lbldescrgenero"></label>
+                                                                        @Html.TextBoxFor(model => model.ID_GENERO, new { @class = "control-label", @id = "lblgenero", @value = "Código", @style = "visibility:hidden;" })
+                                                                    </p>
+                                                                </a>
+                                                            </h5>
+                                                        </div>
+                                                        <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingSix">
+                                                            <div class="card-block">
+                                                                <div class="form-group">
+
+                                                                    <div class="form-group">
+
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="col-md-12">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-bordered" id="dataTable0023" width="100%" cellspacing="0">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>
+                                                                                            CÓDIGO
+                                                                                        </th>
+                                                                                        <th>
+                                                                                            DESCRICAO
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                <thead>
+                                                                                <tbody>
+                                                                                    @foreach (var item in ViewBag.tbGenero)
+                                                                                    {
+                                                                                        <tr>
+                                                                                            <td class="nr"><span>@item.GENERO</span></td>
+                                                                                            <td class="use-genero">
+                                                                                                @item.DESCRICAO
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    }
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header" role="tab" id="headingSeven">
+                                                            <h5 class="mb-0">
+                                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="headingSeven">
+                                                                    @*@Html.LabelFor(model => model.CEST, htmlAttributes: new { @class = "control-label col-md-12" })*@
+                                                                    @Html.Label("CEST:", htmlAttributes: new { @class = "control-label col-sm-4" })
+                                                                    <p>
+                                                                        <label class="control-label col-lg-12" id="lbldescrcest"></label>
+                                                                        @Html.TextBoxFor(model => model.CEST, new { @class = "control-label col-sm-4", @id = "lblcest", @value = "Código", @style = "visibility:hidden;" })
+                                                                    </p>
+                                                                </a>
+                                                            </h5>
+                                                        </div>
+                                                        <div id="collapseSeven" class="collapse" role="tabpanel" aria-labelledby="headingSeven">
+                                                            <div class="card-block">
+                                                                <div class="form-group">
+
+                                                                    <div class="form-group">
+
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="col-md-12">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-bordered" id="dataTable0026" width="100%" cellspacing="0">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>
+                                                                                            CÓDIGO
+                                                                                        </th>
+                                                                                        <th>
+                                                                                            DESCRICAO
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                <thead>
+                                                                                <tbody>
+                                                                                    @foreach (var item in ViewBag.tbCest)
+                                                                                    {
+                                                                                        <tr>
+                                                                                            <td class="nr"><span>@item.COD_CEST</span></td>
+                                                                                            <td class="use-cest">
+                                                                                                @item.DESCRICAO
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    }
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-12">
+                            <input type="submit" value="Cadastrar" onclick="msg()" class="btn btn-dark btn-block" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="ModalDelete" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><img src="~/img/DELETAR.png" /> Excluir itens</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Deseja realmente excluir esse item?</p>
+                    <div id="Excluir-1">
+                        <div id="Excluir-2">
+                            <table id="grid" class="table table-hover" href="#collapseFour">
+                                <!-- Pesquisa para render -->
+                                <tbody id="Grid_Fornecedor">
+                                    <tr v-for="fornecedor in filtroFornecedor">
+                                        <td class="nr" v-model="fornecedor.RECNUM"><span :value="fornecedor.RECNUM"></span></td>
+                                        <td class="FOR_SELECIONADA" :value="fornecedor.RECNUM">
+                                            <div class="col-md-12">
+                                                <label> Descrição: </label>
+                                                @Html.TextBoxFor(model => model.DESCRICAO, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.DESCRICAO" } })
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Código do produto: </label>
+                                                @Html.TextBoxFor(model => model.CODPRODUTO, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.CODPRODUTO" } })
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Código de Barras: </label>
+                                                @Html.TextBoxFor(model => model.COD_BARRA, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.COD_BARRA" } })
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Preço Bruto: </label>
+                                                @Html.TextBoxFor(model => model.P_BRUTO, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.P_BRUTO" } })
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Preço Liquido: </label>
+                                                @Html.TextBoxFor(model => model.P_LIQUIDO, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.P_LIQUIDO" } })
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label> Código Medida: </label>
+                                                @Html.TextBoxFor(model => model.ID_MEDIDA, new Dictionary<string, object> { { "class", "form-control" }, { "v-model", "fornecedor.ID_MEDIDA" } })
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary use-delete-confirm">Excluir</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+
+<script src="~/Content/vendor/jquery/jquery.min.js"></script>
+<script src="~/Scripts/vue.js"></script>
+
+<script>
+
+    $("#lblMedida").text("");
+    $("#lbldescrMedida").text("");
+    $("#lblncm").text("");
+    $("#lbldescrncm").text("");
+    $("#lblservicos").text("");
+    $("#lbldescrservicos").text("");
+    $("#lblclasse").text("");
+    $("#lbldescrclasse").text("");
+    $("#lblgenero").text("");
+    $("#lbldescrgenero").text("");
+    $("#lblcest").text("");
+    $("#lbldescrcest").text("");
+
+    $(".use-edit").click(function () {
+        var $row = $(this).closest("tr");
+        var Id = $row.find(".nr").text();
+        $.ajax({
+            url: 'ListaEdit',
+            type: 'post',
+            contentType: 'application/x-www-form-urlencoded',
+            data: { RECNUM: Id },
+            success: function (data) {
+                CarregaProdutos.listaProdutos = data;
+                CarregaProdutos.edit = data;
+            },
+            error: function (data) {
+
+            }
+        });
+        $('#ModalForm').modal('show');
+    });
+    $(".use-edit-confirm").click(function () {
+        location.reload();
+    });
+    $(".use-delete").click(function () {
+        var $row = $(this).closest("tr");//Find the row
+        var Id = $row.find(".nr").text(); //Find the text
+        $.ajax({
+            url: 'ListaEdit',
+            type: 'post',
+            contentType: 'application/x-www-form-urlencoded',
+            data: { RECNUM: Id },
+            success: function (data) {
+                ExcluirProdutos.listaProdutos = data;
+                ExcluirProdutos.edit = data;
+            },
+            error: function (data) {
+
+            }
+        });
+        
+        $('#ModalDelete').modal('show');
+
+    });
+    $(".use-delete-confirm").click(function () {
+        var $row = $(this).closest("tr");    // Find the row
+        var Id = $row.find(".nr").text(); // Find the text
+        $.ajax({
+            url: 'Delete',
+            type: 'post',
+            contentType: 'application/x-www-form-urlencoded',
+            data: { RECNUM: Id },
+            success: function (data) {
+
+
+            },
+            error: function (data) {
+
+
+            }
+        });
+        location.reload();
+    });
+    $(".use-add-confirm").click(function () {
+        var $row = $(this).closest("tr");
+        var Id = $row.find(".nr").text();
+        $.ajax({
+            url: 'Delete',
+            type: 'post',
+            contentType: 'application/x-www-form-urlencoded',
+            data: { RECNUM: Id },
+            success: function (data) {
+
+
+            },
+            error: function (data) {
+
+
+            }
+        });
+    });
+    $(".use-media").click(function () {
+        var $row = $(this).closest("tr");
+        var Id = $row.find(".nr").text();
+        var desc = $row.find(".use-media").text();
+        $("#lblMedida").val(Id);
+        $("#lbldescrMedida").text(desc + " Cod.:" + Id);
+        if (desc === "TONELADA") {
+            $("#txtFAT_CONV").val("1000");
+        }
+        else {
+            $("#txtFAT_CONV").val("1");
+        }
+
+    });
+    $(".use-ncm").click(function () {
+        var $row = $(this).closest("tr");
+        var Id = $row.find(".nr").text();
+        var desc = $row.find(".use-ncm").text();
+        $("#lblncm").val(Id);
+        $("#lbldescrncm").text(desc);
+    });
+    $(".use-servicos").click(function () {
+        var $row = $(this).closest("tr");
+        var Id = $row.find(".nr").text();
+        var desc = $row.find(".use-servicos").text();
+        $("#lblservicos").val(Id);
+        $("#lbldescrservicos").text(desc);
+    });
+    $(".use-classe").click(function () {
+        var $row = $(this).closest("tr");
+        var Id = $row.find(".nr").text();
+        var desc = $row.find(".use-classe").text();
+        $("#lblclasse").val(Id);
+        $("#lbldescrclasse").text("" + desc + " Cod.:");
+    });
+    $(".use-genero").click(function () {
+        var $row = $(this).closest("tr");
+        var Id = $row.find(".nr").text();
+        var desc = $row.find(".use-genero").text();
+        $("#lblgenero").val(Id);
+        $("#lbldescrgenero").text(desc);
+    });
+    $(".use-cest").click(function () {
+        var $row = $(this).closest("tr");
+        var Id = $row.find(".nr").text();
+        var desc = $row.find(".use-cest").text();
+        $("#lblcest").val(Id);
+        $("#lbldescrcest").text(desc);
+    });
+
+
+
+    function Cadastrar(e) {
+        $('#ModalFormCadastro').modal('show');
+        $.ajax({
+            url: 'Cadastrar',
+            dataType: '0',
+            type: 'post',
+            contentType: 'application/x-www-form-urlencoded',
+            data: $(this).serialize(),
+            success: function (data, textStatus, jQxhr) {
+                $('#response pre').html(data);
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+    };
+    var CarregaProdutos = new Vue({
+        el: '#example-1',
+        data: {
+            searchString: "",
+            listaProdutos: []
+        },
+        methods: {
+            edit: function (data) {
+                //data.editmode = !data.editmode;
+                alert(data.ID_EMPRESA);
+                $('#txtDescricao').val(' :' + data.RECNUM);
+                vempresa = data.DESCRICAO;
+            }
+        },
+        computed: {
+            filtroFornecedor: function () {
+                var produtos_array = this.listaProdutos,
+                    searchString = this.searchString;
+                if (!searchString) {
+                    return produtos_array;
+                }
+
+                searchString = searchString.trim().toLowerCase();
+                produtos_array = produtos_array.filter(function (item) {
+                    if (item.DESCRICAO.toLowerCase().indexOf(searchString) !== -1) {
+                        return item;
+                    }
+                })
+                return produtos_array;
+            }
+        },
+    });
+
+    var ExcluirProdutos = new Vue({
+        el: '#Excluir-1',
+        data: {
+            searchString: "",
+            listaProdutos: []
+        },
+        methods: {
+            edit: function (data) {
+                //data.editmode = !data.editmode;
+                alert(data.ID_EMPRESA);
+                $('#txtDescricao').val(' :' + data.RECNUM);
+                vempresa = data.DESCRICAO;
+            }
+        },
+        computed: {
+            filtroFornecedor: function () {
+                var produtos_array = this.listaProdutos,
+                    searchString = this.searchString;
+                if (!searchString) {
+                    return produtos_array;
+                }
+
+                searchString = searchString.trim().toLowerCase();
+                produtos_array = produtos_array.filter(function (item) {
+                    if (item.DESCRICAO.toLowerCase().indexOf(searchString) !== -1) {
+                        return item;
+                    }
+                })
+                return produtos_array;
+            }
+        },
+    });
+
+
+
+
+
+</script>

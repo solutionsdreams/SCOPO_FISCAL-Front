@@ -1,0 +1,373 @@
+﻿
+@{
+    ViewBag.Title = "Formulario";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Breadcrumbs-->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">Administrador</li>
+                </ol>
+                <!-- Example DataTables Card-->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Tabela de Dados Códigos
+                    </div>
+                    <div class="card-body">
+
+                        <form>
+
+                            <div class="form-group">
+                                <!-- State Button -->
+                                <label for="state_id" class="control-label">AMBIENTE:</label>
+                                <select class="form-control" id="tipo_envio">
+                                    <option value="1">PRODUÇÃO</option>
+                                    <option value="2">PRODUÇÃO RESTRITA - DADOS REAIS</option>
+                                    <option value="3">PRODUÇÃO RESTRITA - DADOS FICTÍCIOS</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <!-- State Button -->
+                                <label for="state_id" class="control-label">VERSÃO:</label>
+                                <select class="form-control" id="state_id">
+                                    <option value="1.3">EFD-Reinf v. 1.3</option>
+                                    <option value="1.2">EFD-Reinf v. 1.2</option>
+                                    <option value="1.1">EFD-Reinf v. 1.1</option>
+                                    <option value="1.0">EFD-Reinf v. 1.0</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <!-- State Button -->
+                                <label for="state_id" class="control-label">EMPRESA:</label>
+                                <select class="form-control" id="id_empresa">
+                                    <option value="486">LARRU S INDUSTRIA E COMERCIO DE COSMETICOS LTDA</option>
+                                    <option value="001"> IK CONTROLE DE ACESSO E SERVIÇOS LTDA</option>
+                                </select>
+                            </div>
+                            <label for="zip_id" class="control-label">PERÍODO</label>
+                            <div class="form-group">
+                                <!-- Zip Code-->
+                                <label for="zip_id" class="control-label"> INÍCIO</label>
+                                <input type="date" class="form-control-lg" id="DTA_ini" name="DTA_ini">
+                                &nbsp;
+                                <label for="zip_id" class="control-label"> FIM</label>
+                                <input type="date" class="form-control-lg" id="DTA_fim" name="DTA_fim">
+                            </div>
+
+
+                            @*<div class="form-group">
+                                    <!-- Submit Button -->
+                                    <button type="submit" class="btn btn-primary">Buy!</button>
+                                </div>*@
+
+                        </form>
+                        <br>
+                        @*<div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable3" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            CONTA P
+                                        </th>
+                                        <th>
+                                            CONTA C
+                                        </th>
+                                        <th>
+                                            NUMDOC
+                                        </th>
+                                        <th>
+                                            DIV
+                                        </th>
+                                        <th>
+                                            TP_DOC
+                                        </th>
+                                        <th>
+                                            DT_DOC
+                                        </th>
+                                        <th>
+                                            DT_LCTO
+                                        </th>
+                                        <th>
+                                            PIS
+                                        </th>
+                                        <th>
+                                            COFINS
+                                        </th>
+                                        <th>
+                                            DESCRIÇÃO
+                                        </th>
+                                        <th>
+                                            BASE
+                                        </th>
+                                        <th>
+                                            EMPRESA
+                                        </th>
+                                        <th>
+                                            CLIENTE
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.Resultado)
+                                    {
+                                        <tr>
+                                            <td>
+
+                                                <input type="text" value="@item.CONTA_P">
+                                            </td>
+                                            <td>
+                                                <input type="text" value="@item.CONTA_C">
+                                            </td>
+                                            <td>
+                                                @item.NUMDOC
+                                            </td>
+                                            <td>
+                                                <input type="text">
+                                            </td>
+                                            <td>
+                                                @item.TP_DOC
+                                            </td>
+                                            <td>
+                                                <input type="text">
+                                            </td>
+                                            <td>
+                                                <input type="text">
+                                            </td>
+                                            <td>
+                                                <input type="text" value="@item.PIS">
+                                            </td>
+                                            <td>
+                                                <input type="text" value="@item.COFINS">
+                                            </td>
+                                            <td>
+                                                <input type="text" value="@item.TEXTO">
+                                            </td>
+                                            <td>
+                                                <input type="text">
+                                            </td>
+                                            <td>
+                                                <input type="text" value="@item.EMPRESA">
+                                            </td>
+                                            <td>
+                                                <input type="text">
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>*@
+                        <br>
+                        @*<input class="btn btn-dark btn-block" type="submit" value="Gerar XML" />*@
+                        <input class="btn btn-dark btn-block" type="button" onclick="transfertoinput()" id="pop" value="Gerar XML/enviar SPED" />
+                        <br>
+                    </div>
+                    <div class="card-footer small text-muted"></div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid-->
+            <!-- /.content-wrapper-->
+            <footer class="sticky-footer">
+                <div class="container">
+                    <div class="text-center">
+                        <small>Copyright © WBCO  2017</small>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <div class="modal fade" id="imagemodal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div>
+                    <img src="~/img/conecxao.gif" />
+                    <h4 style="color:azure">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enviando Dados SPED. </h4>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="imagemodalfora" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                
+                <div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="~/img/foradora.gif" />
+                    <h4 style="color:azure"> Conectando com servidor de Produção.</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imagemodalforadoar" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="~/img/atencao.png" width="55px" />
+                        <h5 class="modal-title">&nbsp;Atenção</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <p>Servidor de Produção não esta respondendo.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imagemodalerro" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="~/img/atencao.png" width="55px" />
+                        <h5 class="modal-title">&nbsp;Atenção</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <p>Não localizado o certificado digital para o CNPJ</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imagemodalok" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div>
+
+                </div>
+            </div>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="~/img/ok.png" width="55px" />
+                        <h5 class="modal-title">&nbsp;Atenção</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <p>Arquivo com o período já foi processado anteriormente. </p>
+                        <p>Por esse motivo os dados foram ATUALIZADOS no SPED. </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imagemodalMSG" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div>
+
+                </div>
+            </div>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="~/img/calendario.ico" width="55px" />
+                        <h5 class="modal-title">&nbsp;Atenção</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Não foi selecionado o período.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+}
+
+
+
+
+<script>
+
+    $('.dropdown-menu a').click(function () {
+        $('#selected').text($(this).text());
+    });
+
+
+    function transfertoinput() {
+        var e = document.getElementById("id_empresa");
+        var itemSelecionado = e.options[e.selectedIndex].value;
+
+        var server = document.getElementById("tipo_envio");
+        var serverSelecionado = ($('#tipo_envio').val());
+
+
+        var date = new Date($('#DTA_ini').val());
+        day = date.getDate();
+        month = date.getMonth() + 1;
+        year = date.getFullYear();
+        var eNaN = Number.isNaN(day);
+        //alert(serverSelecionado);
+        if (serverSelecionado != 1) {
+            if (eNaN != true) {
+                if (itemSelecionado == "001") {
+                    $.ajax({
+                        url: 'Formulario',
+                        dataType: '0',
+                        type: 'post',
+                        contentType: 'application/x-www-form-urlencoded',
+                        data: $(this).serialize(),
+                        success: function (data) {
+                            //$('#imagemodal').modal('show');
+                            //$('#imagemodalok').modal('show');
+                        },
+                        error: function (data) {
+                            $('#imagemodal').modal('show');
+                            setTimeout(function () {
+                                $('#imagemodal').modal('hide');
+                                $('#imagemodalok').modal('show');
+                            }, 5000);
+                        }
+                    });
+                }
+                else {
+                    $('#imagemodalerro').modal('show');
+                }
+            }
+            else {
+                $('#imagemodalMSG').modal('show');
+            }
+        }
+        else
+        {
+            $('#imagemodalfora').modal('show');
+            setTimeout(function () {
+                $('#imagemodalfora').modal('hide');
+                $('#imagemodalforadoar').modal('show');
+            }, 15000);
+
+        }
+    };
+
+
+</script>
